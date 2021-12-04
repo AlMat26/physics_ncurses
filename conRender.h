@@ -12,9 +12,17 @@ public:
 
 	char getInput ();
 
+	void setViewPosition ( double x, double y );
+
 	~conRender ();
 private:
 	double m_posX;
 	double m_posY;
+
+	unsigned int windowWidth;
+	unsigned int windowHeight;
+
+	double windowAspect;
+
 	const double charAspect = 0.89;
 };

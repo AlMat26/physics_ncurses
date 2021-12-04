@@ -12,8 +12,9 @@ conRender::conRender () {
 }
 
 void conRender::printxy ( std::string str, int x, int y ) {
-	mvprintw ( -y * charAspect, 
-			x * charAspect, 
+
+	mvprintw ( -y * charAspect * windowAspect + m_posY, 
+			x * charAspect * windowAspect + m_posX, 
 			str.c_str () );
 }
 
@@ -23,11 +24,22 @@ char conRender::getInput () {
 
 
 void conRender::clearScreen () {
+
 	clear ();
+
+	getmaxyx ( stdscr, windowHeight, windowWidth );
+	windowAspect = windowWidth / windowHeight;
 }
 
 void conRender::refreshScreen () {
 	refresh ();
+}
+
+
+void conRender::setViewPosition ( double x, double y ) {
+	
+	m_posX = windowWidth/2 + x;
+        m_posY = windowHeight/2 + y;
 }
 
 

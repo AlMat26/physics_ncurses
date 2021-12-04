@@ -14,7 +14,16 @@ public:
 
 	void invertVelocity ();
 
-	double getX ();                                                 double getY ();
+	double getX ();
+	double getY ();
+
+	double getMass ();
+
+	double getImpulseX ();
+	double getImpulseY ();
+
+	double getVelocityX ();
+	double getVelocityY ();
 
 private:
 	double m_x, m_y;
