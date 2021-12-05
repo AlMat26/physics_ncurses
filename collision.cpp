@@ -12,7 +12,7 @@ void Collision::collide ( Object* obj1, Object* obj2 ) {
 	double obj2ImpulseX = obj1 -> getImpulseX () - obj2 -> getImpulseX ();
         double obj2ImpulseY = obj1 -> getImpulseY () - obj2 -> getImpulseY ();
 
-        if ( far <= 0.7 ) {
+        if ( far <= 1 ) {
                 obj1 -> addImpulse ( obj1ImpulseX, obj1ImpulseY );
 		obj2 -> addImpulse ( obj2ImpulseX, obj2ImpulseY );
         }

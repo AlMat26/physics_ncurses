@@ -16,12 +16,22 @@ void getCharUpdate ( conRender* render, bool* run, char* input ) {
 	}
 }
 
+std::string getObjectProperties ( Object* obj ) {
+
+	return "[x:" + std::to_string ( obj -> getX () ) + "; y:" +
+                                std::to_string ( obj -> getY () ) + "]\n" +
+
+				"[impulse (x;y) = "
+                                + std::to_string ( obj -> getImpulseX () ) + ";" +
+                                std::to_string ( obj -> getImpulseY () ) + "]";
+}
+
 int main () {
 
 	bool run = true;
 	char input;
 	conRender render;
-	Object object1 ( 0, 0, 350 );
+	Object object1 ( 0, 0, 320);
 	Object object2 ( 6, 0, 200 );
 	Collision collision;
 
@@ -30,15 +40,14 @@ int main () {
 	render.clearScreen ();
 	render.refreshScreen ();
 
-	object1.addImpulse ( 0.5, 0 );
-	object2.addImpulse ( 0.5, 0 );
-
 	object1.setBegin ();
 	object2.setBegin ();
 
 	while ( run ) {
 		render.clearScreen ();
 
+		render.printxy ( getObjectProperties ( &object1 ), 
+				object1.getX (), object1.getY () + 2 );
 		render.printxy ( "@",
 				object1.getX (), 
 				object1.getY () );
