@@ -2,13 +2,14 @@
 
 #include "object.h"
 
-Object::Object ( double x, double y, double mass ) {
+Object::Object ( double x, double y, double mass, double density ) {
 
 	m_x = x;
 	m_y = y;
 	m_mass = mass;
 	pX = 0;
 	pY = 0;
+	m_density = density;
 }
 
 void Object::addImpulse ( double x, double y ) {
@@ -85,4 +86,9 @@ double Object::getVelocityX () {
 double Object::getVelocityY () {
 
 	return velocityY;
+}
+
+double Object::getDensity () {
+
+	return m_density;
 }

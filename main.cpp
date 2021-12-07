@@ -31,8 +31,8 @@ int main () {
 	bool run = true;
 	char input;
 	conRender render;
-	Object object1 ( 0, 0, 320);
-	Object object2 ( 6, 0, 200 );
+	Object object1 ( 0, 0, 500, 0.8 );
+	Object object2 ( 6, 0, 200, 0.5 );
 	Collision collision;
 
 	std::thread getChar ( getCharUpdate, &render, &run, &input );

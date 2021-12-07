@@ -6,7 +6,7 @@
 
 class Object {
 public:
-	Object (double x, double y, double mass);
+	Object ( double x, double y, double mass, double density );
 
 	void addImpulse ( double x, double y );
 	void update ();
@@ -25,6 +25,8 @@ public:
 	double getVelocityX ();
 	double getVelocityY ();
 
+	double getDensity ();
+
 private:
 	double m_x, m_y;
 	double m_mass;
@@ -38,6 +40,8 @@ private:
 
 	double FX; //force
 	double FY;
+
+	double m_density;
 
 	double beginTime;
 	
