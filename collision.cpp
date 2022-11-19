@@ -1,19 +1,18 @@
 #include "collision.h"
+#include "vec2.h"
 
 
 void Collision::collide ( Object* obj1, Object* obj2 ) {
 
-        double far = sqrt ( pow ( obj1-> getX () - obj2 -> getX (), 2 )
-                        + pow ( obj1 -> getY () - obj2 -> getY (), 2 ) );
+        double far = sqrt ( pow ( obj1-> getPosition ().x - obj2 -> getPosition ().x, 2 )
+                        + pow ( obj1 -> getPosition ().y - obj2 -> getPosition ().y, 2 ) );
 
-	double obj1ImpulseX = obj2 -> getImpulseX () - obj1 -> getImpulseX () * obj2 -> getDensity ();
-	double obj1ImpulseY = obj2 -> getImpulseY () - obj1 -> getImpulseY () * obj2 -> getDensity ();
+	Vec2 obj1Impulse = obj2 -> getImpulse () - obj1 -> getImpulse () * obj2 -> getDensity ();
 
-	double obj2ImpulseX = obj1 -> getImpulseX () - obj2 -> getImpulseX () * obj2 -> getDensity ();
-        double obj2ImpulseY = obj1 -> getImpulseY () - obj2 -> getImpulseY () * obj2 -> getDensity ();
+	Vec2 obj2Impulse = obj1 -> getImpulse () - obj2 -> getImpulse () * obj2 -> getDensity ();
 
         if ( far <= 1 ) {
-                obj1 -> addImpulse ( obj1ImpulseX, obj1ImpulseY );
-		obj2 -> addImpulse ( obj2ImpulseX, obj2ImpulseY );
+                obj1 -> addImpulse ( obj1Impulse );
+		obj2 -> addImpulse ( obj2Impulse );
         }
 }

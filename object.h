@@ -1,45 +1,40 @@
 #include <vector>
 #include <ctime>
+#include "vec2.h"
 
 #ifndef OBJECT_H
 #define OBJECT_H
 
 class Object {
 public:
-	Object ( double x, double y, double mass, double density );
+	Object ( Vec2 pos, double mass, double density );
 
-	void addImpulse ( double x, double y );
+	void addImpulse ( Vec2 arg );
 	void update ();
 	void setBegin ();
 
 	void invertVelocity ();
 
-	double getX ();
-	double getY ();
+	Vec2 getPosition ();
 
 	double getMass ();
 
-	double getImpulseX ();
-	double getImpulseY ();
+	Vec2 getImpulse ();
 
-	double getVelocityX ();
-	double getVelocityY ();
+	Vec2 getVelocity ();
 
 	double getDensity ();
 
 private:
-	double m_x, m_y;
+	Vec2 m_position;
 	double m_mass;
 	double m_hight;
 	
-	double velocityX = 0; //[m/sec]
-	double velocityY = 0;
+	Vec2 velocity; //[m/sec]
 
-	double pX = 0; //impulse (x,y)
-	double pY = 0; //[kg*m/sec]
+	Vec2 p; //impulse (x,y) [kg*m/sec]
 
-	double FX; //force
-	double FY;
+	Vec2 m_force; //force;
 
 	double m_density;
 

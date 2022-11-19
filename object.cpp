@@ -2,19 +2,15 @@
 
 #include "object.h"
 
-Object::Object ( double x, double y, double mass, double density ) {
+Object::Object ( Vec2 pos, double mass, double density ) {
 
-	m_x = x;
-	m_y = y;
+	m_position = pos;
 	m_mass = mass;
-	pX = 0;
-	pY = 0;
 	m_density = density;
 }
 
-void Object::addImpulse ( double x, double y ) {
-	pX += x;
-	pY += y;
+void Object::addImpulse ( Vec2 arg ) {
+	p += arg;
 	setBegin ();
 }
 
@@ -25,12 +21,9 @@ void Object::update () {
 	time /= CLOCKS_PER_SEC;
 	double dTime = time - beginTime;
 
-	velocityX = pX / m_mass /* dTime*/;
+	velocity = p / m_mass /* dTime*/;
 
-	velocityY = pY / m_mass /* dTime*/;
-
-	m_x += velocityX;
-	m_y += velocityY;
+	m_position += velocity;
 
 }
 
@@ -44,20 +37,14 @@ void Object::setBegin () {
 
 void Object::invertVelocity () {
 
-	velocityX *= -1;
-	velocityY *= -1;
+	velocity *= -1;
 
-	pX *= -1;
-	pY *= -1;
+	p *= -1;
 }
 
 
-double Object::getX () {
-        return m_x;
-}
-
-double Object::getY () {
-        return m_y;
+Vec2 Object::getPosition () {
+        return m_position;
 }
 
 
@@ -67,25 +54,15 @@ double Object::getMass () {
 }
 
 
-double Object::getImpulseX () {
+Vec2 Object::getImpulse () {
 
-	return pX;
-}
-
-double Object::getImpulseY () {
-
-	return pY;
+	return p;
 }
 
 
-double Object::getVelocityX () {
+Vec2 Object::getVelocity () {
 
-	return velocityX;
-}
-
-double Object::getVelocityY () {
-
-	return velocityY;
+	return velocity;
 }
 
 double Object::getDensity () {
